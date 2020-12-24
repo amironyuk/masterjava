@@ -20,8 +20,8 @@ public class MainMatrix {
 
         double singleThreadSum = 0.;
         double concurrentThreadSum = 0.;
-        int count = 1;
-        while (count < 6) {
+
+        for (int count = 1; count < 6; count++) {
             System.out.println("Pass " + count);
             long start = System.currentTimeMillis();
             final int[][] matrixC = MatrixUtil.singleThreadMultiply(matrixA, matrixB);
@@ -39,8 +39,8 @@ public class MainMatrix {
                 System.err.println("Comparison failed");
                 break;
             }
-            count++;
         }
+
         executor.shutdown();
         out("\nAverage single thread time, sec: %.3f", singleThreadSum / 5.);
         out("Average concurrent thread time, sec: %.3f", concurrentThreadSum / 5.);
